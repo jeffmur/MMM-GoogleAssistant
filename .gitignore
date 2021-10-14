@@ -1,0 +1,8 @@
+/models
+/node_modules
+
+# Hide all secrets
+*.json
+
+/installer/installer.log
+/package-lock.json
