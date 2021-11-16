@@ -21,7 +21,7 @@ const update = (data) => {
 
   // kill the speaker after enough data has been sent to it and then let it flush out
   spokenResponseLength += data.length;
-  const audioTime = spokenResponseLength / (24000 * 16 / 8) * 1000;
+  const audioTime = (spokenResponseLength / ((24000 * 16) / 8)) * 1000;
   clearTimeout(speakerTimer);
   speakerTimer = setTimeout(() => {
     speaker.end();
@@ -31,5 +31,5 @@ const update = (data) => {
 module.exports = {
   init,
   open,
-  update,
+  update
 };

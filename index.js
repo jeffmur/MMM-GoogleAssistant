@@ -1,16 +1,20 @@
-'use strict';
+"use strict";
 
-const EventEmitter = require('events');
-const util = require('util');
+const EventEmitter = require("events");
+const util = require("util");
 
-const Assistant = require('./components/assistant');
-const Auth = require('./components/auth');
-const Conversation = require('./components/conversation');
+const Assistant = require("./components/assistant");
+const Auth = require("./components/auth");
+const Conversation = require("./components/conversation");
 
+/**
+ * @param authConfig
+ * @param callback
+ */
 function GoogleAssistant(authConfig, callback) {
   if (authConfig === undefined) {
-    const error = new Error('Missing auth config object!');
-    this.emit('error', error);
+    const error = new Error("Missing auth config object!");
+    this.emit("error", error);
     if (callback) callback(error);
     return;
   }
@@ -19,7 +23,7 @@ function GoogleAssistant(authConfig, callback) {
 
   const assistantReady = () => {
     if (assistant) {
-      this.emit('ready', assistant);
+      this.emit("ready", assistant);
       if (callback) callback(assistant);
     }
   };
@@ -32,7 +36,7 @@ function GoogleAssistant(authConfig, callback) {
     // we need to auth with Google right out of the gate
     const auth = new Auth(authConfig);
 
-    auth.on('ready', (client) => {
+    auth.on("ready", (client) => {
       assistant = new Assistant(client);
       assistantReady();
     });
@@ -40,17 +44,17 @@ function GoogleAssistant(authConfig, callback) {
 
   this.start = (conversationConfig, callback) => {
     if (assistant === undefined) {
-      const error = new Error('Tried calling start() before the ready event!');
-      this.emit('error', error);
+      const error = new Error("Tried calling start() before the ready event!");
+      this.emit("error", error);
       if (callback) callback(error);
       return;
     }
 
     const conversation = new Conversation(assistant, conversationConfig);
-    this.emit('started', conversation);
+    this.emit("started", conversation);
     if (callback) callback(conversation);
   };
-  
+
   return this;
 }
 
