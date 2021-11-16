@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/j-ZoFrLkHjVTbRnj0kXW9FRQz8wLA5xf2LJasXL35na2_KaZjyr-HcdDWLhXysFfTYaNWKCCdEiV4He0e-aaFrl-O1rqANNmp-7hyuDl3uKL7zcJZaiIkdTAWcXmg5HwTtNMiOHVGyE=w2400" width="600" />
+  <img src="pub/banner.png" width="600" />
 </p>
 
 <p align="center">
@@ -11,7 +11,12 @@
   </a>
 </p>
 
-# MMM-Porcupine
+# MMM-GoogleAssistant
+
+## TODO INSTALL & Configuration
+
+Need to get other modules on git first
+
 
 MMM-Porcupine is a customizable hotword detection module to activate/notify other [MagicMirror](https://github.com/MichMich/MagicMirror) modules
 

@@ -2,7 +2,8 @@
 /node_modules
 
 # Hide all secrets
-*.json
+client_secret.json
+tokens.json
 
 /installer/installer.log
 /package-lock.json

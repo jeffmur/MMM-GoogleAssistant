@@ -132,7 +132,7 @@ module.exports = NodeHelper.create({
     if (config.user.isInterrupted) {
       console.log("Interrupted.");
       clearTimeout();
-      // recorder.release();
+      recorder.release();
     } else {
       // Wake Word NOT Detected
       if (index === -1) {
