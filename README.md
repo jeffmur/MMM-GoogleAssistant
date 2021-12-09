@@ -67,15 +67,11 @@ Supports multiple hotwords & sensitivities
 
 - `debug` - turn on/off debug mode.
 
-- `hotword` - The hotword you wish to detect. The available hotwords are "porcupine", "bumblebee", "grasshopper", "terminator, and "hey edison"
+- `hotword` - The hotword you wish to detect.
 
 - `sensitivity` - Override default sensitivity value 
     * Value could be within a range from `0.0` to `1.0`.
     * Default sensitivity values is 0.7
-
-- `notification` - notification name to emit when the hotword is detected. [Preconfigured for AMk2 activation.]
-
-- `parameters` - payload to send with your notification. [Preconfigured for AMk2 activation].
 
  ### Notifications
  MMM-GoogleAssistant can receive notification for start or stop listening based on user login events from [MMM-ProfileSwitcher](https://github.com/jeffmur/MMM-ProfileSwitcher)
