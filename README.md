@@ -13,8 +13,27 @@
 
 # MMM-GoogleAssistant
 
-MMM-GoogleAssistant is a customizable hotword detection module to activate/notify other [MagicMirror](https://github.com/MichMich/MagicMirror) modules
+MMM-GoogleAssistant is a customizable hotword detection module to activate/notify other [MagicMirror](https://github.com/MichMich/MagicMirror) modules. This is a pre-trained model that can activate an embedded Google Assistant that requires OAuth Keys. The Porcupine Wake Word Engine is open-source and executes ONLY locally.  
 
+## Google Assistant Keys + Setup 
+1. Create a Google Project on Actions Console & click on device registration:
+![](pub/SetupProject.png)
+
+ENABLE THE FOLLOWING APIS on your Google Cloud Project in the [Google Cloud Console](https://console.cloud.google.com/):
+- Cloud Pub/Sub API
+- Google Assistant API
+- Cloud Speech-to-Text API
+
+2. Register a model & download the client_secret.json 
+
+3. Run Jarvis.js to test your configuration and say "Jarvis"
+
+4. The system will open a local browser and require you to login with your Google Account. 
+
+If you would like to setup facial recognition on another device, highly recommended setup instructions here: https://github.com/jeffmur/Smart-Mirror 
+
+Now your tokens.json will be automatically generated and access to the Embedded Google Assistant API. 
+ 
 ## Wake Word
 My wakeword is set to "jarvis", others include :
 
