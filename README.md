@@ -13,60 +13,53 @@
 
 # MMM-GoogleAssistant
 
-## TODO INSTALL & Configuration
+MMM-GoogleAssistant is a customizable hotword detection module to activate/notify other [MagicMirror](https://github.com/MichMich/MagicMirror) modules
 
-Need to get other modules on git first
+## Wake Word
+My wakeword is set to "jarvis", others include :
 
-
-MMM-Porcupine is a customizable hotword detection module to activate/notify other [MagicMirror](https://github.com/MichMich/MagicMirror) modules
-
-The default hotwords are "porcupine", "bumblebee", "grasshopper", "terminator, and "hey edison"
+The default hotwords are:
+``` js
+ALEXA: ALEXA,
+AMERICANO: AMERICANO,
+BLUEBERRY: BLUEBERRY,
+BUMBLEBEE: BUMBLEBEE,
+COMPUTER: COMPUTER,
+GRAPEFRUIT: GRAPEFRUIT,
+GRASSHOPPER: GRASSHOPPER,
+HEY_GOOGLE: HEY_GOOGLE,
+HEY_SIRI: HEY_SIRI,
+JARVIS: JARVIS,
+OK_GOOGLE: OK_GOOGLE,
+PICOVOICE: PICOVOICE,
+PORCUPINE: PORCUPINE,
+TERMINATOR: TERMINATOR,
+```
 
 See [Picovoice Porcupine](https://github.com/Picovoice/porcupine) for info on how to train your own model
-
-It would be great to get a model trained by the community on the "smart mirror" hotword 
 
 ## Installation 
 ```sh
 cd ~/MagicMirror/modules
-git clone https://github.com/SikandAlex/MMM-Porcupine.git
-cd MMM-Porcupine
+git clone https://github.com/jeffmur/MMM-GoogleAssistant
+cd MMM-GoogleAssistant
 npm install
 ```
 
-## Update
-**2020/04/23**: v0.0.1
-  * First release for testing on RPi 4 Raspbian Buster
-
 ## Configuration
-### Basic
-```js
-{
-  module: 'MMM-Porcupine',
-  config: {
-    hotword: "porcupine"
-  }
-}
-```
+A sample configuration is available on Smart Mirror as [sample.config.json](https://github.com/jeffmur/Smart-Mirror/blob/main/sample.config.js). There are two other modules that connect to this service: MMM-ProfileSwitcher and MMM-DeviceControl which controls Volume + Screensaver on Raspberry Pi Buster. See the main repo: https://github.com/jeffmur/Smart-Mirror
 
 ### Advanced
-
+Supports multiple hotwords & sensitivities
 ```js
 {
-  module: 'MMM-Porcupine',
+  module: 'MMM-GoogleAssistant',
   config: {
     debug: false,
-    hotword: "porcupine",
-    sensitivity: 0.7,
-    onDetected: {
-      notification: "ASSISTANT_ACTIVATE",
-      parameters: {
-        type: "MIC",
-        profile: "default",
-        chime: true
-       }
-    }
+    hotword: ["jarvis"],
+    sensitivity: [0.7]
   }
+  classes: "everyone" // authorized users get access to Google Assistant
 }
 ```
 
@@ -85,10 +78,7 @@ npm install
 - `parameters` - payload to send with your notification. [Preconfigured for AMk2 activation].
 
  ### Notifications
- MMM-Porcupine can receive notification for start or stop listening
-  * `PORCUPINE_START`: Start listening for hotwords
-  * `PORCUPINE_STOP`: Stop listening for hotwords
+ MMM-GoogleAssistant can receive notification for start or stop listening based on user login events from [MMM-ProfileSwitcher](https://github.com/jeffmur/MMM-ProfileSwitcher)
+  * `ASSISTANT_START`: Start listening for hotwords
+  * `ASSISTANT_STOP`: Stop listening for hotwords
   
- ### MMM-AssistantMk2 users
-  * MMM-Porcupine is preconfigured for this module
-  * Just turn `useA2D: true` on the MMM-AssistantMk2 config file
